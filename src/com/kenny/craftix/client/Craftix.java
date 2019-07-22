@@ -187,14 +187,6 @@ public class Craftix
 		
 		try
 		{
-			if(this.isRunning())
-			{
-				this.init();
-			}
-			else
-			{
-				this.shutdown(0);
-			}
 		}
 		catch(Exception e)
 		{
@@ -260,7 +252,6 @@ public class Craftix
 			AudioMaster.init();
 			this.guiAdder.guiInit(this);
 			this.textureManager = new TextureManager();
-			this.sceneLoader();
 			
 		}
 		catch(Exception e)
@@ -282,10 +273,9 @@ public class Craftix
 		this.quitGameScene = false;
 		if(this.isInMenuScene())
 		{
-			this.mainMenu.loadScene(this);
 			try 
 			{
-				this.updateMainMenu();
+
 			} 
 			catch (LWJGLException e) 
 			{
@@ -305,8 +295,6 @@ public class Craftix
 		{
 			this.guiLoading.loadLoadingScreen();
 			this.checkGLError("World Loading");
-			this.world.loadScene(this);
-			this.updateGameDisplay();
 			this.saveAllGameOptions();
 			this.isGamePause = false;
 			this.quitTheScene();
